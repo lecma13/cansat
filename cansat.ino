@@ -1,4 +1,4 @@
-const int captemperature = 0 ;
+const int captemperature = A0 ;
 
 void setup() {
  Serial.begin(9600);
@@ -7,7 +7,9 @@ void setup() {
 
 void loop() {
   int valtemperature = analogRead(captemperature);
-  float temperature = (valtemperature - 0.5) *100;      //calcule v -> °C
+  float temperature = valtemperature * 3.3;
+ temperature /= 1024.0;
+ temperature = ( temperature - 0.5) * 100 ;      //calcule v -> °C
   Serial.print("temperature:");
   Serial.print(temperature); 
   Serial.println( " °C" );
